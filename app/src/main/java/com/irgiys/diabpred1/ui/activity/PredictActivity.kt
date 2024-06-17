@@ -4,12 +4,14 @@ import android.content.res.AssetManager
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.snackbar.Snackbar
 import com.irgiys.diabpred1.R
 import com.irgiys.diabpred1.databinding.ActivityPredictBinding
 import com.irgiys.diabpred1.utils.inputConversion
@@ -52,23 +54,7 @@ class PredictActivity : AppCompatActivity() {
         }
 
         predictViewModel.result.observe(this, Observer { result ->
-            if (result > 0.5) {
-                binding.tvResultPrediction.text = "Terprediksi memiliki Diabetes"
-                binding.tvResultPrediction.setTextColor(
-                    ContextCompat.getColor(
-                        this,
-                        R.color.red_500
-                    )
-                )
-            } else {
-                binding.tvResultPrediction.text = "Terprediksi tidak memiliki Diabetes"
-                binding.tvResultPrediction.setTextColor(
-                    ContextCompat.getColor(
-                        this,
-                        R.color.teal_200
-                    )
-                )
-            }
+            getResult(result)
         })
 
     }
@@ -129,6 +115,56 @@ class PredictActivity : AppCompatActivity() {
             bloodGlucose.editText?.doOnTextChanged { text, _, _, _ ->
                 inputItem[3] = text.toString()
             }
+        }
+    }
+
+    private fun getResult(result: Float) {
+        lateinit var snackbar: Snackbar
+        if (result > 0.5) {
+            snackbar =
+                Snackbar.make(binding.main, getString(R.string.predict_positif), Snackbar.LENGTH_LONG)
+                    .setAction("Close") {
+                        snackbar.dismiss()
+                    }
+            val snackbarView = snackbar.view
+            val backgroundColor = ContextCompat.getColor(this, R.color.red_500)
+            val textColor = ContextCompat.getColor(this, R.color.white)
+            snackbar.setBackgroundTint(backgroundColor)
+            snackbarView.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
+                .setTextColor(textColor)
+            snackbar.show()
+
+            binding.tvResultPrediction.text = getString(R.string.predict_positif)
+            binding.tvResultPrediction.setTextColor(
+                ContextCompat.getColor(
+                    this,
+                    R.color.red_500
+                )
+            )
+        } else {
+            snackbar = Snackbar.make(
+                binding.main,
+                getString(R.string.predict_negatif),
+                Snackbar.LENGTH_LONG
+            )
+                .setAction("OK") {
+                    snackbar.dismiss()
+                }
+            val snackbarView = snackbar.view
+            val backgroundColor = ContextCompat.getColor(this, R.color.teal_700)
+            val textColor = ContextCompat.getColor(this, R.color.white)
+            snackbar.setBackgroundTint(backgroundColor)
+            snackbarView.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
+                .setTextColor(textColor)
+            snackbar.show()
+
+            binding.tvResultPrediction.text = getString(R.string.predict_negatif)
+            binding.tvResultPrediction.setTextColor(
+                ContextCompat.getColor(
+                    this,
+                    R.color.teal_200
+                )
+            )
         }
     }
 

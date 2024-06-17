@@ -7,6 +7,8 @@
     <string name="title_about">About</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="predict_negatif">Terprediksi tidak memiliki Diabetes</string>
+    <string name="predict_positif">Terprediksi memiliki Diabetes</string>
     <string-array name="options_gender">
         <item>Laki-laki</item>
         <item>Perempuan</item>

@@ -64,10 +64,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text=": irgiys/diapred"
+        android:text=": irgiys/diapred-app"
         app:layout_constraintBaseline_toBaselineOf="@id/dataset_label"
-        app:layout_constraintStart_toEndOf="@id/dataset_label"
-        app:layout_constraintStart_toStartOf="@id/guideline_link" />
+        app:layout_constraintStart_toStartOf="@id/guideline_link"
+        android:textColor="@color/teal_700"
+        />
 
     <TextView
         android:id="@+id/instruction"
@@ -75,7 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
         android:paddingHorizontal="20dp"
-        android:text="Lakukan prediksi diabetes dengan cara mengklik tombol dibawah"
+        android:text="Lakukan prediksi diabetes dengan cara klik tombol dibawah"
         app:layout_constraintBottom_toTopOf="@id/predict_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

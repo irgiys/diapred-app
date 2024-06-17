@@ -39,11 +39,11 @@ android {
 }
 
 dependencies {
-    implementation("org.tensorflow:tensorflow-lite:2.16.1")
-    implementation("org.tensorflow:tensorflow-lite:0.0.0-nightly")
-    implementation("com.github.colourmoon:readmore-textview:v1.0.2")
-    implementation("androidx.fragment:fragment-ktx:1.8.0")
+    implementation(libs.tensorflow.lite)
+    implementation(libs.tensorflow.tensorflow.lite)
+    implementation(libs.readmore.textview)
 
+    implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
