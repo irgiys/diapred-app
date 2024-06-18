@@ -13,9 +13,6 @@ import com.irgiys.diabpred1.viewModel.ModelViewModel
 class ModelFragment : Fragment() {
 
     private var _binding: FragmentModelBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
