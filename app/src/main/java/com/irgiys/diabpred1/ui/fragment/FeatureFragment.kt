@@ -1,60 +1,54 @@
 package com.irgiys.diabpred1.ui.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.irgiys.diabpred1.R
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.irgiys.diabpred1.databinding.FragmentFeatureBinding
+import com.irgiys.diabpred1.model.FeatureItemModel
+import com.irgiys.diabpred1.ui.adapter.FeatureViewAdapter
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [FeatureFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class FeatureFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var _binding: FragmentFeatureBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_feature, container, false)
+    ): View {
+        _binding = FragmentFeatureBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment FeatureFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            FeatureFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        showFeatureItems()
     }
+
+    private fun showFeatureItems() {
+        val recyclerViewFeatureList = binding.recyclerViewFeatureItem
+        recyclerViewFeatureList.setHasFixedSize(true)
+        val featureViewAdapter = FeatureViewAdapter(featureItems)
+        val featureDecoration =
+            DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+        recyclerViewFeatureList.layoutManager = LinearLayoutManager(context)
+        recyclerViewFeatureList.addItemDecoration(featureDecoration)
+        recyclerViewFeatureList.adapter = featureViewAdapter
+    }
+
+    private val featureItems = ArrayList<FeatureItemModel>().apply {
+        add(FeatureItemModel("Gender", "object", "Female | Male | Other", "Jenis kelamin mengacu pada seks biologis seseorang, yang dapat mempengaruhi kerentanan terhadap diabetes."))
+        add(FeatureItemModel("Age", "float64", "0.08-80", "Usia adalah faktor penting karena diabetes lebih sering didiagnosis pada orang dewasa yang lebih tua."))
+        add(FeatureItemModel("hypertension", "int64", "0-1", "Hipertensi adalah kondisi medis di mana tekanan darah di arteri terus-menerus tinggi. Nilainya 0 atau 1, di mana 0 menunjukkan tidak memiliki hipertensi dan 1 berarti memiliki hipertensi."))
+        add(FeatureItemModel("heart_disease", "int64", "0-1", "Penyakit jantung adalah kondisi medis lain yang terkait dengan peningkatan risiko diabetes. Nilainya 0 atau 1, di mana 0 menunjukkan tidak memiliki penyakit jantung dan 1 berarti memiliki penyakit jantung."))
+        add(FeatureItemModel("smoking_history", "object", "No Info | Not Current | Never | Former | Current", "Riwayat merokok juga dianggap sebagai faktor risiko diabetes dan dapat memperburuk komplikasi yang terkait dengan diabetes. Dalam dataset kami, terdapat 5 kategori: tidak saat ini, mantan perokok, tidak ada info, perokok saat ini, tidak pernah, dan pernah."))
+        add(FeatureItemModel("bmi", "float64", "10-95.7", "0"))
+        add(FeatureItemModel("HbA1c_level", "float64", "3.5-9", "1"))
+        add(FeatureItemModel("blood_glucose_level", "int64", "80-300", "0"))
+    }
+
 }

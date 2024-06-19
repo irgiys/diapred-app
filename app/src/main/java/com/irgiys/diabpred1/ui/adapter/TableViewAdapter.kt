@@ -51,7 +51,6 @@ class TableViewAdapter(private val featrueList: List<FeatureModel>) : RecyclerVi
             }
         } else {
             val model = featrueList[rowPos - 1]
-
             holder.apply {
                 setContentBg(txtGender)
                 setContentBg(txtAge)
