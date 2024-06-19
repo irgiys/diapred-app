@@ -2,6 +2,8 @@ package com.irgiys.diabpred1.utils
 
 fun inputConversion(input: Array<String>) : Array<Float>{
     val inputResult: Array<Float> = Array(8) { 0f }
+    val result : Array<Float> = Array(8) { 0f }
+
     for (i in input.indices) {
         if (i in 0..3) {
             inputResult[i] = input[i].toFloat()
@@ -26,5 +28,15 @@ fun inputConversion(input: Array<String>) : Array<Float>{
             }
         }
     }
-    return inputResult
+//    0gender 	1age 	2hypertension 	3heart_disease 	4smoking_history 	5bmi 	6HbA1c_level 	7blood_glucose_level
+    result[0] = inputResult[4]
+    result[1] = inputResult[0]
+    result[2] = inputResult[5]
+    result[3] = inputResult[6]
+    result[4] = inputResult[7]
+    result[5] = inputResult[1]
+    result[6] = inputResult[2]
+    result[7] = inputResult[3]
+
+    return result
 }

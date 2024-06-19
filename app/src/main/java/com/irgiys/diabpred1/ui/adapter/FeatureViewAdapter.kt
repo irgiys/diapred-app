@@ -10,9 +10,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.irgiys.diabpred1.R
 import com.irgiys.diabpred1.model.FeatureItemModel
 
-class FeatureViewAdapter(private val featureList: List<FeatureItemModel>) : RecyclerView.Adapter<FeatureViewAdapter.ViewHolder>() {
+class FeatureViewAdapter(private val featureList: List<FeatureItemModel>) :
+    RecyclerView.Adapter<FeatureViewAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_feature, parent, false)
+        val view: View =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_feature, parent, false)
         return ViewHolder(view)
 
     }
@@ -30,7 +32,7 @@ class FeatureViewAdapter(private val featureList: List<FeatureItemModel>) : Recy
         } else {
             holder.apply {
                 val feature = featureList[rowPos - 1]
-
+                val rangeOrCategory = if (feature.type == "object") "Categorical" else "Range"
                 featureName.text = feature.name
                 featureType.text = feature.type
                 featureInfo.visibility = View.GONE
@@ -40,14 +42,13 @@ class FeatureViewAdapter(private val featureList: List<FeatureItemModel>) : Recy
                     val context = holder.itemView.context
                     val dialog = AlertDialog.Builder(context)
                         .setTitle("Detail ${feature.name}")
-                        .setMessage("Range / Categorical : ${feature.minMax} \nDescription : ${feature.description}")
+                        .setMessage("${rangeOrCategory} : ${feature.minMax} \nDescription : ${feature.description}")
                         .setPositiveButton("OK", null)
                         .create()
                     dialog.show()
                 }
             }
         }
-
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {

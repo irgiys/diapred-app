@@ -18,14 +18,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="Isi semua data dibawah ini untuk melakukan prediksi diabetes" />
+            android:text="Isi semua data dibawah ini untuk melakukan prediksi diabetes dengan ketentuan (min-max) sehingga sesuai dengan data pada dataset" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
-            android:text="Berapa usia anda?" />
+            android:text="Berapa usia anda? (18-80)" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/age"
@@ -34,7 +34,8 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
-            android:hint="Usia">
+            android:hint="Usia"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -43,12 +44,13 @@
                 tools:ignore="VisualLintTextFieldSize" />
         </com.google.android.material.textfield.TextInputLayout>
 
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
-            android:text="Berapa Body Mass Index(BMI) anda?" />
+            android:text="Berapa Body Mass Index(BMI) anda? (10-95.7)" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/bmi"
@@ -57,7 +59,8 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
-            android:hint="BMI">
+            android:hint="BMI"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -71,7 +74,9 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
-            android:text="Berapa kadar gula darah rata-rata selama 2-3 bulan terakhir?" />
+            android:text="Berapa kadar gula darah rata-rata selama 2-3 bulan terakhir? (3.5-9)"
+
+            />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/glucose_average"
@@ -80,7 +85,8 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
-            android:hint="HbA1c Level">
+            android:hint="HbA1c Level"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -89,12 +95,13 @@
                 tools:ignore="VisualLintTextFieldSize" />
         </com.google.android.material.textfield.TextInputLayout>
 
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
-            android:text="Berapa jumlah glukosa dalam aliran darah pada waktu tertentu?" />
+            android:text="Berapa jumlah glukosa dalam aliran darah pada waktu tertentu? (80-300)" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/blood_glucose"
@@ -103,7 +110,8 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
-            android:hint="Kadar Glukosa">
+            android:hint="Kadar Glukosa"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -111,6 +119,7 @@
                 android:inputType="numberDecimal"
                 tools:ignore="VisualLintTextFieldSize" />
         </com.google.android.material.textfield.TextInputLayout>
+
 
         <TextView
             android:layout_width="match_parent"

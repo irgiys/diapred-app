@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import com.irgiys.diabpred1.R
 import com.irgiys.diabpred1.databinding.ActivityPredictBinding
+import com.irgiys.diabpred1.utils.InputFilterMinMax
 import com.irgiys.diabpred1.utils.inputConversion
 import com.irgiys.diabpred1.viewModel.PredictViewModel
 import org.tensorflow.lite.Interpreter
@@ -35,7 +36,7 @@ class PredictActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityPredictBinding.inflate(layoutInflater)
         predictViewModel = ViewModelProvider(this).get(PredictViewModel::class.java)
-        initInterpreter(assets, "diabetes.tflite")
+        initInterpreter(assets, "diabetes_model.tflite")
 
         setContentView(binding.root)
         setupAutoCompleteAdapters()
@@ -54,7 +55,7 @@ class PredictActivity : AppCompatActivity() {
         }
 
         predictViewModel.result.observe(this, Observer { result ->
-            getResult(result)
+            displayResult(result)
         })
 
     }
@@ -118,58 +119,30 @@ class PredictActivity : AppCompatActivity() {
         }
     }
 
-    private fun getResult(result: Float) {
+    private fun displayResult(result: Float) {
         lateinit var snackbar: Snackbar
-        if (result > 0.5) {
-            snackbar =
-                Snackbar.make(binding.main, getString(R.string.predict_positif), Snackbar.LENGTH_LONG)
-                    .setAction("Close") {
-                        snackbar.dismiss()
-                    }
-            val snackbarView = snackbar.view
-            val backgroundColor = ContextCompat.getColor(this, R.color.red_500)
-            val textColor = ContextCompat.getColor(this, R.color.white)
-            snackbar.setBackgroundTint(backgroundColor)
-            snackbarView.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
-                .setTextColor(textColor)
-            snackbar.show()
+        val isPositive = result > .5
+        val messageResId = if (isPositive) R.string.predict_positif else R.string.predict_negatif
+        val colorResId = if (isPositive) R.color.red_500 else R.color.teal_700
+        val textColorResId = R.color.white
 
-            binding.tvResultPrediction.text = getString(R.string.predict_positif)
-            binding.tvResultPrediction.setTextColor(
-                ContextCompat.getColor(
-                    this,
-                    R.color.red_500
-                )
-            )
-        } else {
-            snackbar = Snackbar.make(
-                binding.main,
-                getString(R.string.predict_negatif),
-                Snackbar.LENGTH_LONG
-            )
-                .setAction("OK") {
-                    snackbar.dismiss()
-                }
-            val snackbarView = snackbar.view
-            val backgroundColor = ContextCompat.getColor(this, R.color.teal_700)
-            val textColor = ContextCompat.getColor(this, R.color.white)
-            snackbar.setBackgroundTint(backgroundColor)
-            snackbarView.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
-                .setTextColor(textColor)
-            snackbar.show()
+        snackbar = Snackbar.make(binding.main, getString(messageResId), Snackbar.LENGTH_LONG)
+            .setAction("Close") { snackbar.dismiss() }
+        snackbar.setBackgroundTint(ContextCompat.getColor(this, colorResId))
+        snackbar.view.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
+            .setTextColor(ContextCompat.getColor(this, textColorResId))
+        snackbar.show()
 
-            binding.tvResultPrediction.text = getString(R.string.predict_negatif)
-            binding.tvResultPrediction.setTextColor(
-                ContextCompat.getColor(
-                    this,
-                    R.color.teal_200
-                )
-            )
+        binding.tvResultPrediction.apply {
+            text = getString(messageResId)
+//            text = result.toString()
+            setTextColor(ContextCompat.getColor(this@PredictActivity, colorResId))
         }
     }
 
     override fun onDestroy() {
         _binding = null
+        interpreter.close()
         super.onDestroy()
     }
 
