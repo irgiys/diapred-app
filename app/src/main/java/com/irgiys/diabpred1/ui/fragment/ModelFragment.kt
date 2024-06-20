@@ -4,11 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.irgiys.diabpred1.databinding.FragmentModelBinding
-import com.irgiys.diabpred1.viewModel.ModelViewModel
 
 class ModelFragment : Fragment() {
 
@@ -20,15 +17,15 @@ class ModelFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val modelViewModel =
-            ViewModelProvider(this).get(ModelViewModel::class.java)
 
         _binding = FragmentModelBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-        val textView: TextView = binding.textNotifications
-        modelViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        binding.apply{
+            description.setCollapsedText("Baca Selengkapnya")
+            description.setExpandedText("Lebih Sedikit")
+            description.setTrimLines(5)
+            description.setCollapsedTextColor(androidx.constraintlayout.widget.R.color.material_grey_600)
+            description.setExpandedTextColor(androidx.constraintlayout.widget.R.color.material_grey_600)
         }
         return root
     }

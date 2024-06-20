@@ -9,7 +9,8 @@ android {
 
     defaultConfig {
         applicationId = "com.irgiys.diabpred1"
-        minSdk = 24
+//        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -39,6 +40,7 @@ android {
 }
 
 dependencies {
+    implementation("de.hdodenhof:circleimageview:3.1.0")
     implementation(libs.tensorflow.lite)
     implementation(libs.tensorflow.tensorflow.lite)
     implementation(libs.readmore.textview)

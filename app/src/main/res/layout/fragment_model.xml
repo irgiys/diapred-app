@@ -1,22 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragment.ModelFragment">
 
-    <TextView
-        android:id="@+id/text_notifications"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent"
+        android:layout_marginVertical="10dp"
+        android:orientation="vertical">
+
+
+        <com.colormoon.readmoretextview.ReadMoreTextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:paddingHorizontal="20dp"
+            android:text="Model ini dimulai dengan layer input (dense_input) yang menerima data dengan ukuran fitur sebanyak 8. Hidden layer pertama adalah layer dengan 18 neuron, menerima input dari layer input. Hidden layer kedua, memiliki 8 neuron, dan menerima input dari hidden layer pertama. Hidden layer ketiga, terdiri dari 8 neuron, menerima input dari hidden layer kedua. Layer output terdiri dari 1 neuron dengan fungsi aktivasi sigmoid, menerima input dari hidden layer ketiga, dan menghasilkan output yang merupakan probabilitas kelas positif dalam klasifikasi biner." />
+
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="500dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/modeling" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:justificationMode="inter_word"
+            android:paddingHorizontal="20dp"
+            android:text="Secara keseluruhan, model ini terdiri dari 3 hidden layer dengan fungsi aktivasi ReLU dan 1 layer output dengan fungsi aktivasi sigmoid. Model ini dirancang untuk klasifikasi biner, di mana input memiliki 8 fitur dan outputnya adalah probabilitas kelas diabetes." />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:justificationMode="inter_word"
+            android:paddingHorizontal="20dp"
+            android:text="Visualisasi neural network dari arsitektur model ini adalah sebagai berikut: " />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="370dp"
+            android:layout_height="370dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="8dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@color/white"
+                android:src="@drawable/nn_visual" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:justificationMode="inter_word"
+            android:paddingHorizontal="20dp"
+            android:text="Model ini memiliki accuracy : 0.8679, loss : 0.2685, dan berikut adalah classification report dari model prediksi : " />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="300dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="120dp"
+            app:cardCornerRadius="8dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@color/custom_grey"
+                android:src="@drawable/classification_report" />
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+</ScrollView>
