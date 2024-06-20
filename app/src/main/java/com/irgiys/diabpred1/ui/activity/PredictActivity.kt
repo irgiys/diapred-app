@@ -6,8 +6,11 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -26,6 +29,7 @@ class PredictActivity : AppCompatActivity() {
 
     private var _binding: ActivityPredictBinding? = null
     private val binding get() = _binding!!
+
     private lateinit var interpreter: Interpreter
     private lateinit var predictViewModel: PredictViewModel
 
@@ -35,15 +39,23 @@ class PredictActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityPredictBinding.inflate(layoutInflater)
-        predictViewModel = ViewModelProvider(this).get(PredictViewModel::class.java)
-        initInterpreter(assets, "diabetes_model.tflite")
-
         setContentView(binding.root)
+
+        enableEdgeToEdge()
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+
+        predictViewModel = ViewModelProvider(this).get(PredictViewModel::class.java)
+
+
+        supportActionBar?.title = "Predict Diabetes"
+        initInterpreter(assets, "diabetes_model.tflite")
         setupAutoCompleteAdapters()
         setupAutoCompleteListeners()
         setupTextWatchers()
-        supportActionBar?.title = "Predict Diabetes"
-
         binding.btnPredict.setOnClickListener {
             if (inputItem.any { it.isEmpty() }) {
                 Toast.makeText(this, "Isi semua inputan terlebih dahulu", Toast.LENGTH_SHORT)
