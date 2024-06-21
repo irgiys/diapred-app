@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:paddingHorizontal="20dp"
-        android:text="Dataset ini memiliki 8 feature dengan tipe data yang berbeda-beda"
+        android:text="@string/desc_feature"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

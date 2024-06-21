@@ -24,14 +24,17 @@ class AboutMeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
+            val intent = Intent(Intent.ACTION_VIEW)
+            emailLink.setOnClickListener {
+                intent.data = Uri.parse("mailto:irgiyansy@gmail.com")
+                startActivity(intent)
+            }
             githubLink.setOnClickListener {
-                val intent = Intent(Intent.ACTION_VIEW)
                 intent.data =
                     Uri.parse("https://www.github.com/irgiys")
                 startActivity(intent)
             }
             linkedinLink.setOnClickListener {
-                val intent = Intent(Intent.ACTION_VIEW)
                 intent.data =
                     Uri.parse("https://www.linkedin.com/in/irgiyansyah-2b2a23209/")
                 startActivity(intent)
@@ -40,6 +43,7 @@ class AboutMeFragment : Fragment() {
 
 
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

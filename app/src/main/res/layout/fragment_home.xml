@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:paddingHorizontal="20dp"
-        android:text="Aplikasi ini bertujuan melakukan prediksi diabetes berdasarkan data pasien. Pentingnya untuk diingat bahwa Aplikasi ini bukan pengganti dari konsultasi medis yang sesungguhnya. Meskipun dapat memberikan prediksi, sangat disarankan untuk mendiskusikan hasilnya dengan seorang profesional medis untuk evaluasi dan rekomendasi yang lebih tepat."
+        android:text="@string/about_app"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title" />
@@ -76,7 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
         android:paddingHorizontal="20dp"
-        android:text="Lakukan prediksi diabetes dengan cara klik tombol dibawah"
+        android:text="@string/do_predict_below"
         app:layout_constraintBottom_toTopOf="@id/predict_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -87,7 +87,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="124dp"
         android:drawablePadding="10dp"
-        android:text="Prediksi Diabetes"
+        android:text="@string/predict_diabetes"
         app:icon="@drawable/ic_predict"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -18,12 +18,12 @@ class SplashActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportActionBar?.hide()
-        enableEdgeToEdge()
-        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+//        enableEdgeToEdge()
+//        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
+//            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+//            insets
+//        }
 
         binding.goToApp.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)

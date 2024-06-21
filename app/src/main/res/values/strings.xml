@@ -4,11 +4,47 @@
     <string name="title_dataset">Dataset</string>
     <string name="title_feature">Feature</string>
     <string name="title_model">Model</string>
-    <string name="title_about">About</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="title_about">About me</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="predict_negatif">Terprediksi tidak memiliki Diabetes</string>
     <string name="predict_positif">Terprediksi memiliki Diabetes</string>
+    <string name="fill_all_input">Isi semua data dibawah ini untuk melakukan prediksi diabetes dengan ketentuan (min-max) sehingga sesuai dengan data pada dataset</string>
+    <string name="question_age">Berapa usia anda? (18–80)</string>
+    <string name="question_bmi">Berapa Body Mass Index(BMI) anda? (10–95.7)</string>
+    <string name="question_hba1c">Berapa kadar gula darah rata–rata selama 2–3 bulan terakhir? (3.5–9)</string>
+    <string name="question_glucose">Berapa jumlah glukosa dalam aliran darah pada waktu tertentu? (80–300)</string>
+    <string name="question_gender">Jenis Kelamin</string>
+    <string name="question_hipertension">Apakah memiliki hipertensi?</string>
+    <string name="question_heart">Apakah memiliki penyakit jantung?</string>
+    <string name="question_smoking">Riwayat merokok</string>
+    <string name="predict">Predict</string>
+    <string name="hint_age">Usia</string>
+    <string name="hint_bmi">BMI</string>
+    <string name="hint_hba1c">HbA1c Level</string>
+    <string name="hint_glucose">Kadar Glukosa</string>
+    <string name="hint_gender">Laki-laki / Perempuan</string>
+    <string name="hint_yes_no">Ya / Tidak</string>
+    <string name="hint_smoking">Merokok</string>
+    <string name="desc_app">Prediksi diabetes dengan mudan menggunakan machine learning</string>
+    <string name="open_app">Masuk Ke Aplikasi</string>
+    <string name="irgiyansyah">Irgiyansyah</string>
+    <string name="my_email">irgiyansy@gmail.com</string>
+    <string name="github">Github</string>
+    <string name="linkedin">LinkedIn</string>
+    <string name="colon">:</string>
+    <string name="irgiys">Irgiys</string>
+    <string name="desc_dataset_1">Dataset ini adalah kumpulan data medis pasien, beserta status diabetes mereka (positif atau negatif). Data ini mencakup fitur-fitur seperti usia, jenis kelamin, indeks massa tubuh (BMI), hipertensi, penyakit jantung, riwayat merokok, level HbA1c, dan level glukosa darah. Dataset ini dapat digunakan untuk membangun model pembelajaran mesin guna memprediksi diabetes pada pasien berdasarkan riwayat medis mereka.</string>
+    <string name="desc_dataset_2">Berikut adalah 10 sampel data pasien diabetes yang diambil dari dataset ini :</string>
+    <string name="desc_dataset_3">Dataset ini memiliki 100.000 total baris dengan 9 kolom sebelum dilakukannya data cleansing dan data processing. Berikut link dataset yang digunakan :</string>
+    <string name="desc_feature">Dataset ini memiliki 8 feature dengan tipe data yang berbeda-beda</string>
+    <string name="about_app">Aplikasi ini bertujuan melakukan prediksi diabetes berdasarkan data pasien. Pentingnya untuk diingat bahwa Aplikasi ini bukan pengganti dari konsultasi medis yang sesungguhnya. Meskipun dapat memberikan prediksi, sangat disarankan untuk mendiskusikan hasilnya dengan seorang profesional medis untuk evaluasi dan rekomendasi yang lebih tepat.</string>
+    <string name="do_predict_below">Lakukan prediksi diabetes dengan cara klik tombol dibawah</string>
+    <string name="predict_diabetes">Prediksi Diabetes</string>
+
+    <string name="desc_model_2">Secara keseluruhan, model ini terdiri dari 3 hidden layer dengan jumlah neuron yang sama yaitu 4 yang menggunakan fungsi aktivasi ReLU dan 1 layer output dengan fungsi aktivasi sigmoid. Model ini dirancang untuk klasifikasi biner, di mana input memiliki 8 fitur dan outputnya adalah probabilitas kelas diabetes.</string>
+    <string name="desc_model_3">Visualisasi neural network dari arsitektur model ini adalah sebagai berikut:</string>
+    <string name="desc_model_4">Model ini memiliki accuracy : 0.8746, loss : 0.2729, dan berikut adalah classification report dari model prediksi :</string>
+    <string name="desc_model_1">Model ML yang digunakan adalah Artificial Neural Network (ANN). ANN merupakan model ML yang terdiri dari layer neuron yang terhubung. Model ini dilatih menggunakan optimasi adam optimizer serta menggunakan binary_crossentropy sebagai fungsi loss. Berikut adalah arsitektur model yang digunakan:</string>
     <string-array name="options_gender">
         <item>Laki-laki</item>
         <item>Perempuan</item>
@@ -22,6 +58,4 @@
         <item>Mantan Perokok</item>
         <item>Perokok Aktif</item>
     </string-array>
-
-
 </resources>

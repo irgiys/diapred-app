@@ -18,14 +18,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="Isi semua data dibawah ini untuk melakukan prediksi diabetes dengan ketentuan (min-max) sehingga sesuai dengan data pada dataset" />
+            android:text="@string/fill_all_input" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
-            android:text="Berapa usia anda? (18-80)" />
+            android:text="@string/question_age" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/age"
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
-            android:hint="Usia"
+            android:hint="@string/hint_age"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
-            android:text="Berapa Body Mass Index(BMI) anda? (10-95.7)" />
+            android:text="@string/question_bmi" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/bmi"
@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
-            android:hint="BMI"
+            android:hint="@string/hint_bmi"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -74,7 +74,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
-            android:text="Berapa kadar gula darah rata-rata selama 2-3 bulan terakhir? (3.5-9)"
+            android:text="@string/question_hba1c"
 
             />
 
@@ -85,7 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
-            android:hint="HbA1c Level"
+            android:hint="@string/hint_hba1c"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -101,7 +101,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
-            android:text="Berapa jumlah glukosa dalam aliran darah pada waktu tertentu? (80-300)" />
+            android:text="@string/question_glucose" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/blood_glucose"
@@ -110,7 +110,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
-            android:hint="Kadar Glukosa"
+            android:hint="@string/hint_glucose"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -126,7 +126,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
-            android:text="Jenis Kelamin" />
+            android:text="@string/question_gender" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/gender"
@@ -140,7 +140,7 @@
                 android:id="@+id/gender_auto_complete"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Laki-laki / Perempuan"
+                android:hint="@string/hint_gender"
                 android:inputType="none" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -149,7 +149,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
-            android:text="Apakah memiliki hipertensi?" />
+            android:text="@string/question_hipertension" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/hypertension"
@@ -163,7 +163,7 @@
                 android:id="@+id/hypertension_auto_complete"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Ya / Tidak"
+                android:hint="@string/hint_yes_no"
                 android:inputType="none" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -172,7 +172,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
-            android:text="Apakah memiliki penyakit jantung?" />
+            android:text="@string/question_heart" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/heart"
@@ -186,7 +186,7 @@
                 android:id="@+id/heart_auto_complete"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Ya / Tidak"
+                android:hint="@string/hint_yes_no"
                 android:inputType="none"
                 tools:ignore="SpeakableTextPresentCheck" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -196,7 +196,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
-            android:text="Riwayat merokok" />
+            android:text="@string/question_smoking" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/smoke"
@@ -210,7 +210,7 @@
                 android:id="@+id/smoke_auto_complete"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Merokok"
+                android:hint="@string/hint_smoking"
                 android:inputType="none" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -227,7 +227,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="Predict"
+                android:text="@string/predict"
                 app:cornerRadius="10dp" />
 
             <TextView

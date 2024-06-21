@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:paddingHorizontal="20dp"
-        android:text="Dataset ini adalah kumpulan data medis pasien, beserta status diabetes mereka (positif atau negatif). Data ini mencakup fitur-fitur seperti usia, jenis kelamin, indeks massa tubuh (BMI), hipertensi, penyakit jantung, riwayat merokok, level HbA1c, dan level glukosa darah. Dataset ini dapat digunakan untuk membangun model pembelajaran mesin guna memprediksi diabetes pada pasien berdasarkan riwayat medis mereka."
+        android:text="@string/desc_dataset_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:paddingHorizontal="20dp"
-        android:text="Berikut adalah 10 sampel data pasien diabetes yang diambil dari dataset ini : "
+        android:text="@string/desc_dataset_2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/description1" />
 
@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:paddingHorizontal="20dp"
-        android:text="Dataset ini memiliki 100.000 total baris dengan 9 kolom sebelum dilakukannya data cleansing dan data processing. Berikut link dataset yang digunakan :"
+        android:text="@string/desc_dataset_3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/horizontalScrollView" />
 

@@ -17,17 +17,8 @@ class ModelFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = FragmentModelBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-        binding.apply{
-            description.setCollapsedText("Baca Selengkapnya")
-            description.setExpandedText("Lebih Sedikit")
-            description.setTrimLines(5)
-            description.setCollapsedTextColor(androidx.constraintlayout.widget.R.color.material_grey_600)
-            description.setExpandedTextColor(androidx.constraintlayout.widget.R.color.material_grey_600)
-        }
-        return root
+        return binding.root
     }
 
     override fun onDestroyView() {

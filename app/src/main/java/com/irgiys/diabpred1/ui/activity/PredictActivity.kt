@@ -41,12 +41,6 @@ class PredictActivity : AppCompatActivity() {
         _binding = ActivityPredictBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        enableEdgeToEdge()
-        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
 
         predictViewModel = ViewModelProvider(this).get(PredictViewModel::class.java)
 

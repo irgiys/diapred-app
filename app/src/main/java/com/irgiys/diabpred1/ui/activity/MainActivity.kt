@@ -12,7 +12,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.irgiys.diabpred1.R
 import com.irgiys.diabpred1.databinding.ActivityMainBinding
-import com.irgiys.diabpred1.databinding.ActivityPredictBinding
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,13 +23,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        enableEdgeToEdge()
-        ViewCompat.setOnApplyWindowInsetsListener(binding.container) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
 
         val navView: BottomNavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
