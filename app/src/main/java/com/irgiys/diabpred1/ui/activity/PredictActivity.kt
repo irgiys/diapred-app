@@ -6,18 +6,14 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import com.irgiys.diabpred1.R
 import com.irgiys.diabpred1.databinding.ActivityPredictBinding
-import com.irgiys.diabpred1.utils.InputFilterMinMax
 import com.irgiys.diabpred1.utils.inputConversion
 import com.irgiys.diabpred1.viewModel.PredictViewModel
 import org.tensorflow.lite.Interpreter
@@ -52,8 +48,7 @@ class PredictActivity : AppCompatActivity() {
         setupTextWatchers()
         binding.btnPredict.setOnClickListener {
             if (inputItem.any { it.isEmpty() }) {
-                Toast.makeText(this, "Isi semua inputan terlebih dahulu", Toast.LENGTH_SHORT)
-                    .show()
+                displayEmptyFieldsError()
             } else {
                 inputData = inputConversion(inputItem)
                 predictViewModel.doInference(inputData, interpreter)
@@ -114,15 +109,32 @@ class PredictActivity : AppCompatActivity() {
 
     private fun setupTextWatchers() {
         binding.apply {
-            age.editText?.doOnTextChanged { text, _, _, _ -> inputItem[0] = text.toString() }
-            bmi.editText?.doOnTextChanged { text, _, _, _ -> inputItem[1] = text.toString() }
+            age.editText?.doOnTextChanged { text, _, _, _ ->
+                inputItem[0] = text.toString()
+                if (text.isNullOrEmpty().not()) age.error = null
+            }
+            bmi.editText?.doOnTextChanged { text, _, _, _ ->
+                inputItem[1] = text.toString()
+                if (text.isNullOrEmpty().not()) bmi.error = null
+            }
             glucoseAverage.editText?.doOnTextChanged { text, _, _, _ ->
                 inputItem[2] = text.toString()
+                if (text.isNullOrEmpty().not()) glucoseAverage.error = null
             }
             bloodGlucose.editText?.doOnTextChanged { text, _, _, _ ->
                 inputItem[3] = text.toString()
+                if (text.isNullOrEmpty().not()) bloodGlucose.error = null
             }
         }
+    }
+
+    private fun displayEmptyFieldsError() {
+        binding.apply {
+            if (age.editText?.text.isNullOrEmpty()) age.error = getString(R.string.empty_filed)
+            if (bmi.editText?.text.isNullOrEmpty()) bmi.error = getString(R.string.empty_filed)
+            if (glucoseAverage.editText?.text.isNullOrEmpty()) glucoseAverage.error = getString(R.string.empty_filed)
+            if (bloodGlucose.editText?.text.isNullOrEmpty()) bloodGlucose.error = getString(R.string.empty_filed)
+            Toast.makeText(this@PredictActivity, "Isi semua inputan terlebih dahulu", Toast.LENGTH_LONG).show() }
     }
 
     private fun displayResult(result: Float) {

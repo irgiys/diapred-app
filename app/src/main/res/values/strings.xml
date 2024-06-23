@@ -33,6 +33,7 @@
     <string name="linkedin">LinkedIn</string>
     <string name="colon">:</string>
     <string name="irgiys">Irgiys</string>
+    <string name="empty_filed">Field ini harus diisi</string>
     <string name="desc_dataset_1">Dataset ini adalah kumpulan data medis pasien, beserta status diabetes mereka (positif atau negatif). Data ini mencakup fitur-fitur seperti usia, jenis kelamin, indeks massa tubuh (BMI), hipertensi, penyakit jantung, riwayat merokok, level HbA1c, dan level glukosa darah. Dataset ini dapat digunakan untuk membangun model pembelajaran mesin guna memprediksi diabetes pada pasien berdasarkan riwayat medis mereka.</string>
     <string name="desc_dataset_2">Berikut adalah 10 sampel data pasien diabetes yang diambil dari dataset ini :</string>
     <string name="desc_dataset_3">Dataset ini memiliki 100.000 total baris dengan 9 kolom sebelum dilakukannya data cleansing dan data processing. Berikut link dataset yang digunakan :</string>
