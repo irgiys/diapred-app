@@ -12,6 +12,7 @@ import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.textfield.TextInputLayout
 import com.irgiys.diabpred1.R
 import com.irgiys.diabpred1.databinding.ActivityPredictBinding
 import com.irgiys.diabpred1.utils.inputConversion
@@ -53,6 +54,7 @@ class PredictActivity : AppCompatActivity() {
                 inputData = inputConversion(inputItem)
                 predictViewModel.doInference(inputData, interpreter)
             }
+            
         }
 
         predictViewModel.result.observe(this, Observer { result ->
@@ -104,6 +106,7 @@ class PredictActivity : AppCompatActivity() {
     private fun setupAutoCompleteListener(autoComplete: AutoCompleteTextView, index: Int) {
         autoComplete.setOnItemClickListener { _, _, position, _ ->
             inputItem[index] = autoComplete.adapter.getItem(position).toString()
+
         }
     }
 
@@ -125,6 +128,18 @@ class PredictActivity : AppCompatActivity() {
                 inputItem[3] = text.toString()
                 if (text.isNullOrEmpty().not()) bloodGlucose.error = null
             }
+            gender.editText?.doOnTextChanged { text, _, _, _ ->
+                if (text.isNullOrEmpty().not()) gender.setError(null)
+            }
+            hypertension.editText?.doOnTextChanged { text, _, _, _ ->
+                if (text.isNullOrEmpty().not()) hypertension.setError(null)
+            }
+            heart.editText?.doOnTextChanged { text, _, _, _ ->
+                if (text.isNullOrEmpty().not()) heart.setError(null)
+            }
+            smoke.editText?.doOnTextChanged { text, _, _, _ ->
+                if (text.isNullOrEmpty().not()) smoke.setError(null)
+            }
         }
     }
 
@@ -134,7 +149,19 @@ class PredictActivity : AppCompatActivity() {
             if (bmi.editText?.text.isNullOrEmpty()) bmi.error = getString(R.string.empty_filed)
             if (glucoseAverage.editText?.text.isNullOrEmpty()) glucoseAverage.error = getString(R.string.empty_filed)
             if (bloodGlucose.editText?.text.isNullOrEmpty()) bloodGlucose.error = getString(R.string.empty_filed)
-            Toast.makeText(this@PredictActivity, "Isi semua inputan terlebih dahulu", Toast.LENGTH_LONG).show() }
+            if (genderAutoComplete.text.isNullOrEmpty()) {
+                gender.setError(getString(R.string.empty_filed))
+            }
+            if (hypertensionAutoComplete.text.isNullOrEmpty()) {
+                hypertension.setError(getString(R.string.empty_filed))
+            }
+            if (heartAutoComplete.text.isNullOrEmpty()) {
+                heart.setError(getString(R.string.empty_filed))
+            }
+            if (smokeAutoComplete.text.isNullOrEmpty()) {
+                smoke.setError(getString(R.string.empty_filed))
+            }
+        }
     }
 
     private fun displayResult(result: Float) {
